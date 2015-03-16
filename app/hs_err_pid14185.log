@@ -1,0 +1,58 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 110100480 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2798), pid=14185, tid=139953115739904
+#
+# JRE version: OpenJDK Runtime Environment (7.0_75-b13) (build 1.7.0_75-b13)
+# Java VM: OpenJDK 64-Bit Server VM (24.75-b04 mixed mode linux-amd64 compressed oops)
+# Derivative: IcedTea 2.5.4
+# Distribution: Ubuntu 14.10, package 7u75-2.5.4-1~utopic1
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f4974076000):  VMThread [stack: 0x00007f495fafb000,0x00007f495fbfc000] [id=14195]
+
+Stack: [0x00007f495fafb000,0x00007f495fbfc000],  sp=0x00007f495fbfa4a0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x982856]  VMError::report_and_die()+0x186
+V  [libjvm.so+0x48fc22]  report_vm_out_of_memory(char const*, int, unsigned long, char const*)+0x92
+V  [libjvm.so+0x7f483b]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xeb
+V  [libjvm.so+0x7eef4e]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2e
+V  [libjvm.so+0x861d6b]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x862c23]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xd3
+V  [libjvm.so+0x86333b]  PSYoungGen::resize(unsigned long, unsigned long)+0x1b
+V  [libjvm.so+0x85ed39]  PSScavenge::invoke_no_policy()+0xdc9
+V  [libjvm.so+0x85f518]  PSScavenge::invoke()+0x38
+V  [libjvm.so+0x816e73]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0x984122]  VM_ParallelGCFailedAllocation::doit()+0x92
+V  [libjvm.so+0x9889a7]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0x986f9b]  VMThread::evaluate_operation(VM_Operation*)+0xab
+V  [libjvm.so+0x987646]  VMThread::loop()+0x1e6
+V  [libjvm.so+0x987b11]  VMThread::run()+0x81
+V  [libjvm.so+0x7f1522]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007f497e361960): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f497400a000
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f49740b1800 JavaThread "Service Thread" daemon [_thread_blocked, id=14201, stack(0x00007f495ee13000,0x00007f495ef14000)]
+  0x00007f49740af000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=14200, stack(0x00007f495ef14000,0x00007f495f015000)]
+  
